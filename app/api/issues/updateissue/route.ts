@@ -1,13 +1,14 @@
 import { NextRequest } from "next/server";
-import { prisma } from "@/db";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { db } from "@/src/db/drizzle";
+import { issue } from "@/src/db/schema";
+import { getServerAuthSession } from "@/utils/server-auth";
+import { eq } from "drizzle-orm";
 
 export async function PATCH(request: NextRequest) {
   const { issueId, issueTitle, issueDescription, issuePriority, issueStatus } =
     await request.json();
 
-  const session = await getServerSession(authOptions);
+  const session = await getServerAuthSession();
 
   if (!session?.user.id) {
     return new Response(JSON.stringify({ message: "Kindly log in!" }), {
@@ -17,17 +18,18 @@ export async function PATCH(request: NextRequest) {
   }
 
   try {
-    const updatedIssue = await prisma.issue.update({
-      where: { id: issueId },
-      data: {
+    const updatedIssue = await db.update(issue)
+      .set({
         title: issueTitle,
         description: issueDescription,
         priority: issuePriority,
         status: issueStatus,
-      },
-    });
+        updatedAt: new Date(),
+      })
+      .where(eq(issue.id, issueId))
+      .returning();
 
-    if (updatedIssue) {
+    if (updatedIssue.length > 0) {
       return new Response(JSON.stringify({ message: "Issue updated!" }));
     }
   } catch (error) {

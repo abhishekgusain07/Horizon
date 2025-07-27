@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { Resend } from "resend";
-import { prisma } from "@/db";
+import { db } from "@/src/db/drizzle";
+import { waitListEmails } from "@/src/db/schema";
+import { eq } from "drizzle-orm";
+import { nanoid } from "nanoid";
 import { ratelimit } from "@/lib/rate-limit";
 import { WaitlistEmail } from "@/components/waitlist/waitlist-email";
 import * as React from "react";
@@ -43,11 +46,9 @@ export async function POST(request: NextRequest) {
     }
 
     // checking if email already exists
-    const emailExists = await prisma.waitListEmails.findFirst({
-      where: { email: userEmail },
-    });
+    const emailExists = await db.select().from(waitListEmails).where(eq(waitListEmails.email, userEmail)).limit(1);
 
-    if (emailExists) {
+    if (emailExists.length > 0) {
       return NextResponse.json(
         { message: "Email already exists in the waitlist!" },
         { status: 409 }
@@ -69,13 +70,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const dbResponse = await prisma.waitListEmails.create({
-      data: {
-        email: userEmail.toLowerCase(),
-      },
-    });
+    const dbResponse = await db.insert(waitListEmails).values({
+      id: nanoid(),
+      email: userEmail.toLowerCase(),
+    }).returning();
 
-    if (!dbResponse) {
+    if (dbResponse.length === 0) {
       return NextResponse.json(
         { message: "Email sent, but failed to add to waitlist" },
         { status: 500 }

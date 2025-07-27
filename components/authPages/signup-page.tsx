@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import AuthButton from "./auth-button";
 
 export default function SignupPage() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
 
   useEffect(() => {
