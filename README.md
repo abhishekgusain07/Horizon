@@ -1,5 +1,2 @@
-## Horizon Dev
-
-Streamline your workflow, amplify your impact
-
-COMING SOON!
+Coming soon stay connected 
+Star please !! 
