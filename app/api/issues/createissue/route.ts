@@ -1,7 +1,8 @@
-import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
+import { getServerAuthSession } from "@/utils/server-auth";
+import { db } from "@/src/db/drizzle";
+import { issue } from "@/src/db/schema";
 import { NextRequest } from "next/server";
-import { prisma } from "@/db";
+import { nanoid } from "nanoid";
 
 export async function POST(request: NextRequest) {
   const {
@@ -12,23 +13,23 @@ export async function POST(request: NextRequest) {
     projectId,
   } = await request.json();
 
-  const session = await getServerSession(authOptions);
+  const session = await getServerAuthSession();
 
   if (!session?.user.id) {
     return Response.json({ message: "Kindly log in!" });
   }
 
   if (session.user.id) {
-    const response = await prisma.issue.create({
-      data: {
-        title: issueTitle,
-        description: issueDescription,
-        status: issueStatus,
-        priority: issuePriority,
-        projectId: projectId,
-      },
-    });
-    if (response) {
+    const response = await db.insert(issue).values({
+      id: nanoid(),
+      title: issueTitle,
+      description: issueDescription,
+      status: issueStatus,
+      priority: issuePriority,
+      projectId: projectId,
+    }).returning();
+    
+    if (response.length > 0) {
       return Response.json({
         message: "New issue created!",
       });

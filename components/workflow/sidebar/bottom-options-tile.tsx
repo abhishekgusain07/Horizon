@@ -2,7 +2,7 @@
 import { customToast } from "@/lib/custom-toast";
 import { RAW_ICONS } from "@/lib/icons";
 import SVGIcon from "@/lib/svg-icon";
-import { signOut } from "next-auth/react";
+import { signOut } from "@/utils/auth";
 import Link from "next/link";
 import { title } from "process";
 import { useState } from "react";

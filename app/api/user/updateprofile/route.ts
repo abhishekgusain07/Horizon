@@ -1,12 +1,13 @@
 import { NextRequest } from "next/server";
-import { prisma } from "@/db";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { db } from "@/src/db/drizzle";
+import { user } from "@/src/db/schema";
+import { getServerAuthSession } from "@/utils/server-auth";
+import { eq } from "drizzle-orm";
 
 export async function PATCH(request: NextRequest) {
   const { username, fullname } = await request.json();
 
-  const session = await getServerSession(authOptions);
+  const session = await getServerAuthSession();
 
   if (!session?.user.id) {
     return new Response(JSON.stringify({ message: "Kindly log in!" }), {
@@ -16,15 +17,16 @@ export async function PATCH(request: NextRequest) {
   }
 
   try {
-    const updatedProfile = await prisma.user.update({
-      where: { id: session.user.id },
-      data: {
+    const updatedProfile = await db.update(user)
+      .set({
         name: fullname,
         username: username,
-      },
-    });
+        updatedAt: new Date(),
+      })
+      .where(eq(user.id, session.user.id))
+      .returning();
 
-    if (updatedProfile) {
+    if (updatedProfile.length > 0) {
       return new Response(JSON.stringify({ message: "User info updated!" }));
     }
   } catch (error) {

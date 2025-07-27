@@ -1,10 +1,10 @@
-import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
-import { NextRequest } from "next/server";
-import { prisma } from "@/db";
+import { getServerAuthSession } from "@/utils/server-auth";
+import { db } from "@/src/db/drizzle";
+import { project } from "@/src/db/schema";
+import { eq } from "drizzle-orm";
 
 export async function GET() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerAuthSession();
 
   if (!session?.user.id) {
     return Response.json({ message: "Log in first!" });
@@ -13,11 +13,7 @@ export async function GET() {
   const userID = session.user.id;
 
   if (userID) {
-    const response = await prisma.project.findMany({
-      where: {
-        createdBy: userID,
-      },
-    });
+    const response = await db.select().from(project).where(eq(project.createdBy, userID));
 
     if (response) {
       return Response.json(response);

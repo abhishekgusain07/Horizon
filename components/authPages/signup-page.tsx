@@ -19,7 +19,7 @@ export default function SignupPage() {
 
   const signUpWithGitHub = async () => {
     try {
-      await signIn("github");
+      await signIn.social({ provider: "github" });
     } catch (error) {
       console.log(`You got an error while signing up using GitHub: ${error}`);
     }
@@ -27,9 +27,9 @@ export default function SignupPage() {
 
   const signUpWithGoogle = async () => {
     try {
-      await signIn("google");
+      await signIn.social({ provider: "google" });
     } catch (error) {
-      console.log(`You got an error while signing up using GitHub: ${error}`);
+      console.log(`You got an error while signing up using Google: ${error}`);
     }
   };
   return (

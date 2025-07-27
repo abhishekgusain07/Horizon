@@ -8,7 +8,7 @@ import {
   ProjectStatusType,
 } from "@/utils/types";
 import axios from "axios";
-import { useSession } from "next-auth/react";
+import { useSession } from "@/utils/auth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
