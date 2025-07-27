@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { signIn, useSession } from "@/utils/auth";
+import { useSession } from "@/utils/auth";
+import { authClient } from "@/src/lib/auth-client";
 import { useRouter } from "next/navigation";
 import AuthButton from "./auth-button";
 
@@ -19,7 +20,7 @@ export default function SignupPage() {
 
   const signUpWithGitHub = async () => {
     try {
-      await signIn.social({ provider: "github" });
+      await authClient.signIn.social({ provider: "github" });
     } catch (error) {
       console.log(`You got an error while signing up using GitHub: ${error}`);
     }
@@ -27,7 +28,7 @@ export default function SignupPage() {
 
   const signUpWithGoogle = async () => {
     try {
-      await signIn.social({ provider: "google" });
+      await authClient.signIn.social({ provider: "google" });
     } catch (error) {
       console.log(`You got an error while signing up using Google: ${error}`);
     }
@@ -44,7 +45,10 @@ export default function SignupPage() {
             height={100}
           />
           <div className="grid grid-cols-1 gap-y-2 w-full">
-            <AuthButton btnTitle="Continue with Google" working={false} />
+            <AuthButton btnTitle="Continue with Google" 
+              handleOnClickFunction={signUpWithGoogle}
+              working={true}
+            />
             <AuthButton
               btnTitle="Continue with GitHub"
               working={true}
