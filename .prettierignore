@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.vercel/
+.git/
+dist/
+build/
+out/
+*.lock
+*.log
+.env*
+public/
+src/db/migrations/
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
