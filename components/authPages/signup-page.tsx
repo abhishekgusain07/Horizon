@@ -18,14 +18,6 @@ export default function SignupPage() {
     }
   }, [session?.user.email, router]);
 
-  const signUpWithGitHub = async () => {
-    try {
-      await authClient.signIn.social({ provider: "github" });
-    } catch (error) {
-      console.log(`You got an error while signing up using GitHub: ${error}`);
-    }
-  };
-
   const signUpWithGoogle = async () => {
     try {
       await authClient.signIn.social({ provider: "google" });
@@ -49,12 +41,6 @@ export default function SignupPage() {
               handleOnClickFunction={signUpWithGoogle}
               working={true}
             />
-            <AuthButton
-              btnTitle="Continue with GitHub"
-              working={true}
-              handleOnClickFunction={signUpWithGitHub}
-            />
-            <AuthButton btnTitle="Continue with SAML SSO" working={false} />
           </div>
 
           <div className="text-sm mt-5 w-[80%] flex items-center flex-col">
