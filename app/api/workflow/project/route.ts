@@ -1,12 +1,13 @@
-import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
+import { getServerAuthSession } from "@/utils/server-auth";
 import { NextRequest } from "next/server";
-import { prisma } from "@/db";
+import { db } from "@/src/db/drizzle";
+import { project } from "@/src/db/schema";
+import { eq } from "drizzle-orm";
 
 export async function POST(request: NextRequest) {
   const { project_id } = await request.json();
 
-  const session = await getServerSession(authOptions);
+  const session = await getServerAuthSession();
 
   if (!session?.user.id) {
     return new Response(JSON.stringify({ message: "Kindly Sign in!" }), {
@@ -18,13 +19,10 @@ export async function POST(request: NextRequest) {
   }
 
   if (project_id) {
-    const project = await prisma.project.findUnique({
-      where: {
-        id: project_id,
-      },
-    });
-    if (project) {
-      return new Response(JSON.stringify(project), {
+    const response = await db.select().from(project).where(eq(project.id, project_id));
+    const foundProject = response[0];
+    if (foundProject) {
+      return new Response(JSON.stringify(foundProject), {
         status: 200,
         headers: {
           "Content-Type": "application/json",
