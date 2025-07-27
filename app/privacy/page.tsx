@@ -27,7 +27,7 @@ export default function TermsConditions() {
             Our Commitment to Privacy
           </p>
           <p className="text-[#b0a9a9] font-extralight text-[14px] lg:text-[15px] xl:text-[17px]">
-            At Zenorizon, we believe that privacy is a fundamental right. Our
+            At Horizon, we believe that privacy is a fundamental right. Our
             open-source project management solution is built with privacy at its
             core, and we&apos;re committed to being transparent about how we handle
             your data.

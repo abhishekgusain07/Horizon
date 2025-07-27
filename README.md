@@ -1,4 +1,4 @@
-## Zenorizon Dev
+## Horizon Dev
 
 Streamline your workflow, amplify your impact
 

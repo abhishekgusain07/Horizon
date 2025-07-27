@@ -20,14 +20,14 @@ export const TermsOptions: {
     title: "Self-Hosted Service",
     subTitle: "",
     points: [
-      "Zenorizon provides software that users can deploy on their own infrastructure",
+      "Horizon provides software that users can deploy on their own infrastructure",
       "Users are responsible for their own hosting, maintenance, and compliance",
       "The software is provided 'as is' under the Apache 2.0 License",
     ],
   },
   {
     title: "Software License",
-    subTitle: "Zenorizon is licensed under the Apache 2.0 License:",
+    subTitle: "Horizon is licensed under the Apache 2.0 License:",
     points: [
       "Users are free to use, modify, and distribute the software",
       "The software is provided “as-is” without warranties or guarantees of any kind",
@@ -81,7 +81,7 @@ export const PrivacyOptions: {
     title: "Self-Hosted Instances",
     subTitle: "",
     points: [
-      "When you self-host Zenorizon, your email data remains entirely under your control",
+      "When you self-host Horizon, your email data remains entirely under your control",
       "No data is sent to our servers or third parties without your explicit consent",
       "You maintain complete ownership and responsibility for your data",
       "We provide detailed documentation on secure self-hosting practices",

@@ -56,9 +56,9 @@ export async function POST(request: NextRequest) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "Welcome to Zenorizon <onboarding@zenorizon.com>",
+      from: "Welcome to Horizon <onboarding@Horizon.com>",
       to: userEmail,
-      subject: "Welcome to Zenorizon! ✨",
+      subject: "Welcome to Horizon! ✨",
       react: React.createElement(WaitlistEmail, { userEmail }),
     });
 

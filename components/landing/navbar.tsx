@@ -183,7 +183,7 @@ export default function Navbar() {
           </div>
           <div className="hidden md:flex items-center md:relative gap-x-[5px]">
             <Link
-              href={"https://github.com/kartikver15gr8/zenorizon"}
+              href={"https://github.com/kartikver15gr8/Horizon"}
               target="_blank"
               className="border border-[#313032] flex items-center gap-x-1 h-9 px-2 rounded-lg bg-black text-[13px] lg:text-[14px] cursor-pointer hover:border-[#69696ec3] transition-all duration-200"
             >
@@ -260,7 +260,7 @@ export default function Navbar() {
           {/* Phone Screen Nav Hamburger Tab */}
           <div className="md:hidden flex gap-x-[5px]">
             <Link
-              href={"https://github.com/kartikver15gr8/zenorizon"}
+              href={"https://github.com/kartikver15gr8/Horizon"}
               target="_blank"
               className="border border-[#313032] flex items-center gap-x-1 h-9 px-2 rounded-lg bg-black text-[13px] lg:text-[14px] cursor-pointer"
             >

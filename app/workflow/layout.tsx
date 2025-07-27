@@ -4,7 +4,7 @@ import WorkflowSidebar from "@/components/workflow/sidebar/workflow-sidebar";
 import BottomDock from "@/components/workflow/sidebar/bottom-dock";
 
 export const metadata: Metadata = {
-  title: "Zenorizon",
+  title: "Horizon",
   description: "Workflow",
 };
 

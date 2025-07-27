@@ -22,7 +22,7 @@ export const WorkflowTab = () => {
         </Link>
         <div className="flex gap-x-1 items-center">
           <Link href={"/"} className="text-lg font-medium">
-            Zenorizon
+            Horizon
           </Link>
           <div className="w-4  h-4 flex items-center justify-center  cursor-pointer rounded hover:bg-[#26292f]">
             <SVGIcon className="flex w-4" svgString={RAW_ICONS.ArrowDown} />

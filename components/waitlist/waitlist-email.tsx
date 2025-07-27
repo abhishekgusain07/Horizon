@@ -41,7 +41,7 @@ export const WaitlistEmail: React.FC<WaitlistEmailProps> = ({ userEmail }) => (
         <p>
           Thank you for joining our waitlist with{" "}
           <strong>{userEmail.toLowerCase()}</strong>! We&apos;re thrilled to
-          have you as part of our Zenorizon community.
+          have you as part of our Horizon community.
         </p>
         <p>
           We&apos;re working hard to launch our product soon and you&apos;ll be
@@ -83,7 +83,7 @@ export const WaitlistEmail: React.FC<WaitlistEmailProps> = ({ userEmail }) => (
           color: "#666",
         }}
       >
-        <p>© 2025 Zenorizon. All rights reserved.</p>
+        <p>© 2025 Horizon. All rights reserved.</p>
         <p>
           You&apos;re receiving this email because you signed up for our
           waitlist.

@@ -29,7 +29,7 @@ export default function BottomDock() {
               setActivePopup("profile");
             }}
           >
-            <SVGIcon className="flex w-4" svgString={RAW_ICONS.ZenorizonLogo} />
+            <SVGIcon className="flex w-4" svgString={RAW_ICONS.HorizonLogo} />
             <p className="text-xs">Profile</p>
           </div>
 

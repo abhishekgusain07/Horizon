@@ -18,7 +18,7 @@ export default function Footer() {
             width={100}
           />
           <p className="text-[16px] sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl ">
-            Zenorizon
+            Horizon
           </p>
         </div>
         <p className="text-[16px] sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl ">
@@ -95,7 +95,7 @@ export default function Footer() {
               <SVGIcon className="flex w-4" svgString={RAW_ICONS.X} />
             </a>
             <a
-              href="https://github.com/kartikver15gr8/zenorizon"
+              href="https://github.com/kartikver15gr8/Horizon"
               target="_blank"
               className=" flex items-center"
             >
@@ -114,7 +114,7 @@ export default function Footer() {
       </div>
       <div className="border-t-[0.5px] border-[#565555] h-20 flex items-center justify-between font-extralight text-[#827d7d] text-[12px] sm:text-[13px] lg:text-sm">
         <p className="cursor-pointer">
-          &copy; 2025 Zenorizon Inc, All Rights Reserved
+          &copy; 2025 Horizon Inc, All Rights Reserved
         </p>
         <div className="flex items-center gap-x-2 sm:gap-x-4 lg:gap-x-8">
           <Link

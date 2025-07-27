@@ -27,8 +27,8 @@ export default function TermsConditions() {
             Overview
           </p>
           <p className="text-[#b0a9a9] font-extralight text-[14px] lg:text-[15px] xl:text-[17px]">
-            Zenorizon is an open-source modern issue tracking and project
-            management tool built for high-performing teams. By using Zenorizon,
+            Horizon is an open-source modern issue tracking and project
+            management tool built for high-performing teams. By using Horizon,
             you agree these terms.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function TermsConditions() {
             If you have any queries regarding the terms of service
           </p>
           <Link
-            href={"https://github.com/kartikver15gr8/Zenorizon/issues"}
+            href={"https://github.com/kartikver15gr8/Horizon/issues"}
             className="flex items-center gap-x-1 md:gap-x-2 mt-2"
           >
             <SVGIcon

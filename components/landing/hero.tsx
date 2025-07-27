@@ -90,7 +90,7 @@ export default function Hero() {
           >
             Amplify your impact with
             <p className="text-transparent bg-gradient-to-b from-gray-600 via-gray-400 to-white bg-clip-text ml-2">
-              Zenorizon
+              Horizon
             </p>
           </motion.div>
 
