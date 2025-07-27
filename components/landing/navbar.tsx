@@ -217,10 +217,10 @@ export default function Navbar() {
               </div>
             )}
             {!session?.user?.id &&
-              pathname !== "/login" &&
-              pathname !== "/signup" && (
+              pathname !== "/auth/signin" &&
+              pathname !== "/auth/signup" && (
                 <Link
-                  href={"/signup"}
+                  href={"/auth/signup"}
                   className="border-2 flex items-center px-4 h-9 rounded-lg text-black bg-white cursor-pointer border-[#313032] hover:bg-[#1e1e1f] hover:border-[1px] hover:text-white transition-all duration-300"
                 >
                   Sign in
@@ -337,7 +337,7 @@ export default function Navbar() {
                   </div>
                 ) : (
                   <Link
-                    href={session?.user.email ? "" : "/signup"}
+                    href={session?.user.email ? "" : "/auth/signup"}
                     className="h-16 flex items-center hover:bg-[#3d3d3e80] transition-all duration-500 px-5 py-2 hover:rounded-md "
                     onClick={() => {
                       setIsOpen(!isOpen);

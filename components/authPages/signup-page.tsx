@@ -61,7 +61,7 @@ export default function SignupPage() {
           </div>
           <div className="text-sm flex gap-x-1 mt-4">
             <p className="text-[#838384]">Already have an account?</p>
-            <Link href={"/login"}>Log in</Link>
+            <Link href={"/auth/signin"}>Log in</Link>
           </div>
         </div>
       </div>
